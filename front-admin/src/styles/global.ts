@@ -35,4 +35,20 @@ export default createGlobalStyle`
   button{
     cursor: pointer;
   }
+
+  .light, .dark {
+     display: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .dark {
+      display: block;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .light {
+      display: block;
+    }
+  }
 `;
