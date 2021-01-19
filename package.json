@@ -1,0 +1,11 @@
+{
+  "name": "traveler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:RonaldoAntonucci/traveller.git",
+  "author": "Ronaldo Antonucci <ronaldo.antonuccivrb32@yahoo.com.br>",
+  "license": "MIT",
+  "scripts":{
+    "build:front-admin": "yarn --cwd front-admin build"
+  }
+}
