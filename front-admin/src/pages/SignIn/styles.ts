@@ -47,7 +47,10 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
-  gap: 24px;
+
+  > div + div {
+    margin-top: 12px;
+  }
 `;
 
 export const Form = styled(UnformForm)`
