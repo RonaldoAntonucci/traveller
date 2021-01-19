@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Form as UnformForm } from '@unform/web';
 import Inpt from '../../components/Input';
+import ApperFromLeft from '../../styles/appearFromLeft';
 
 import SignImg from '../../assets/signInImg.png';
 
@@ -27,6 +28,8 @@ export const Background = styled.div`
   background-size: cover;
   display: flex;
   flex: 1;
+
+  animation: ${ApperFromLeft(100)} 1.5s;
 `;
 
 export const Content = styled.div`

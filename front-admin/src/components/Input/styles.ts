@@ -1,10 +1,22 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 import Tooltip from './Tooltip';
 
 interface ContainerProps {
   focused: boolean;
 }
+
+const ApperFromBottom = keyframes`
+  from{
+    opacity: 0;
+    transform: translateY(-20);
+  }
+
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
 
 export const Container = styled.div<ContainerProps>`
   border: 1px solid
@@ -22,6 +34,8 @@ export const Container = styled.div<ContainerProps>`
     font-size: 15px;
     font-family: 'Heebo';
     color: #a0acb2;
+
+    animation: ${ApperFromBottom} 1s;
   }
 `;
 
