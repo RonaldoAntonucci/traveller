@@ -43,7 +43,7 @@ export const Card = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 16px;
+  padding: 32px;
 `;
 
 export const Form = styled(UnformForm)`
@@ -69,10 +69,10 @@ export const Form = styled(UnformForm)`
 export const Input = styled(Inpt)`
   &:first-child {
     border-radius: 10px 10px 0px 0px;
-    border-bottom: 0px;
   }
 
   &:last-child {
+    border-top: 0px;
     border-radius: 0px 0px 10px 10px;
   }
 `;

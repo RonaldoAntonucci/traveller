@@ -9,6 +9,7 @@ import React, {
 } from 'react';
 import { useTheme } from 'styled-components';
 import { AiFillEye, AiFillEyeInvisible } from 'react-icons/ai';
+import { FiAlertCircle } from 'react-icons/fi';
 
 import * as Styled from './styles';
 
@@ -25,7 +26,7 @@ const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { fieldName, defaultValue, registerField } = useField(name);
+  const { fieldName, defaultValue, registerField, error } = useField(name);
   const { colors } = useTheme();
 
   const [value, setValue] = useState(false);
@@ -68,7 +69,7 @@ const Input: React.FC<InputProps> = ({
   }, [type, visible]);
 
   return (
-    <Styled.Container {...rest}>
+    <Styled.Container focused={focused || !!value} {...rest}>
       {(label && value && <label htmlFor={fieldName}>{label}</label>) ||
         (label && focused && <label htmlFor={fieldName}>{label}</label>)}
 
@@ -86,6 +87,12 @@ const Input: React.FC<InputProps> = ({
         <Styled.VisibleButton type="button" onClick={handleClickEye}>
           {passwordIcon}
         </Styled.VisibleButton>
+      )}
+
+      {error && (
+        <Styled.Error title={error}>
+          <FiAlertCircle color={colors.error} size={20} />
+        </Styled.Error>
       )}
     </Styled.Container>
   );

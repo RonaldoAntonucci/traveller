@@ -1,7 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  border: 1px solid #dce2e6;
+import Tooltip from './Tooltip';
+
+interface ContainerProps {
+  focused: boolean;
+}
+
+export const Container = styled.div<ContainerProps>`
+  border: 1px solid
+    ${(props) => (props.focused ? props.theme.colors.primary : '#dce2e6')};
   height: 64px;
   display: flex;
   flex-direction: column;
@@ -39,4 +46,22 @@ export const VisibleButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+`;
+
+export const Error = styled(Tooltip)`
+  position: absolute;
+  left: -32px;
+
+  svg {
+    margin: 0;
+  }
+
+  span {
+    background: ${(props) => props.theme.colors.error};
+    color: #fff;
+
+    &::before {
+      border-color: ${(props) => props.theme.colors.error} transparent;
+    }
+  }
 `;

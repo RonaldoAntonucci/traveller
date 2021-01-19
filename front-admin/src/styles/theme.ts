@@ -4,5 +4,7 @@ export default {
     check: '#51B853',
 
     white: '#fff',
+
+    error: '#c53030',
   },
 };

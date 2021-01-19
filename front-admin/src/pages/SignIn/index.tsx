@@ -2,10 +2,14 @@ import React, { useCallback, useRef, useState } from 'react';
 import { AiOutlineExclamationCircle, AiOutlineCheck } from 'react-icons/ai';
 import { useTheme } from 'styled-components';
 import { FormHandles } from '@unform/core';
+import { ValidationError } from 'yup';
 
 import Button from '../../components/Button';
 
+import schema from './schema';
+
 import * as Styled from './styles';
+import getValidationErrors from '../../utils/getValidationErrors';
 
 const SignIn: React.FC = () => {
   const { colors } = useTheme();
@@ -15,7 +19,21 @@ const SignIn: React.FC = () => {
 
   const checkRemember = useCallback(() => setRemember((prev) => !prev), []);
 
-  const handleSubmit = useCallback((data) => console.log(data), []);
+  const handleSubmit = useCallback(async (data) => {
+    try {
+      formRef.current?.setErrors({});
+
+      await schema.validate(data, { abortEarly: false });
+
+      console.log(data);
+    } catch (err) {
+      if (err instanceof ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+      }
+    }
+  }, []);
 
   return (
     <Styled.Container>
