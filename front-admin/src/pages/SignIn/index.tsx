@@ -24,8 +24,6 @@ const SignIn: React.FC = () => {
       formRef.current?.setErrors({});
 
       await schema.validate(data, { abortEarly: false });
-
-      console.log(data);
     } catch (err) {
       if (err instanceof ValidationError) {
         const errors = getValidationErrors(err);
