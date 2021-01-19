@@ -47,10 +47,7 @@ export const Card = styled.div`
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
-
-  > div + div {
-    margin-top: 12px;
-  }
+  gap: 24px;
 `;
 
 export const Form = styled(UnformForm)`
@@ -58,7 +55,6 @@ export const Form = styled(UnformForm)`
   flex: 2;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 24px;
 
   .inputContainer {
     display: flex;
@@ -71,6 +67,8 @@ export const Form = styled(UnformForm)`
     flex-wrap: wrap;
     gap: 16px 40px;
   }
+
+  gap: 24px;
 `;
 
 export const Input = styled(Inpt)`
