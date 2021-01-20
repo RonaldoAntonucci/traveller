@@ -19,7 +19,7 @@ export const Container = styled.div`
 
   span {
     color: #617480;
-    line-height: 22px;
+    line-height: 2.2rem;
   }
 `;
 
@@ -28,6 +28,7 @@ export const Background = styled.div`
   background-size: cover;
   display: flex;
   flex: 1;
+  margin: 0;
 
   animation: ${ApperFromLeft(100)} 1.5s;
 `;
@@ -36,7 +37,7 @@ export const Content = styled.div`
   display: flex;
   flex: 1;
   justify-content: center;
-  padding: 16px;
+
   flex-wrap: nowrap;
 `;
 
@@ -44,10 +45,14 @@ export const ArrowLeft = styled(AiOutlineArrowLeft)``;
 
 export const Card = styled.div`
   display: flex;
+  flex-wrap: nowrap;
   flex-direction: column;
   justify-content: space-between;
-  padding: 32px;
-  gap: 24px;
+
+  margin: 2rem;
+
+  width: 90%;
+  max-width: 420px;
 `;
 
 export const Form = styled(UnformForm)`
@@ -56,19 +61,32 @@ export const Form = styled(UnformForm)`
   flex-direction: column;
   justify-content: flex-end;
 
+  h1 {
+    margin-bottom: 24px;
+  }
+
   .inputContainer {
     display: flex;
     flex-direction: column;
   }
 
   .rememberContainer {
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 16px 40px;
+
+    @media (max-width: 767px) {
+      flex-direction: column;
+
+      > span {
+        margin-top: 16px;
+      }
+    }
   }
 
-  gap: 24px;
+  > div {
+    margin-bottom: 24px;
+  }
 `;
 
 export const Input = styled(Inpt)`
@@ -84,6 +102,7 @@ export const Input = styled(Inpt)`
 
 export const Checkbox = styled.div<CheckboxProps>`
   display: flex;
+  align-items: center;
 
   > button {
     width: 24px;
@@ -105,6 +124,7 @@ export const Footer = styled.div`
   display: flex;
   align-items: center;
   flex: 1;
+  margin-top: 1em;
 
   span {
     margin-left: 16px;

@@ -21,17 +21,16 @@ const ApperFromBottom = keyframes`
 export const Container = styled.div<ContainerProps>`
   border: 1px solid
     ${(props) => (props.focused ? props.theme.colors.primary : '#dce2e6')};
-  height: 64px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 24px;
+  padding: 1.4em;
   background-color: #fff;
   position: relative;
 
   label {
-    font-size: 15px;
+    font-size: 1.5rem;
     font-family: 'Heebo';
     color: #a0acb2;
 
@@ -40,7 +39,7 @@ export const Container = styled.div<ContainerProps>`
 `;
 
 export const Input = styled.input`
-  font-size: 18px;
+  font-size: 1.8rem;
   display: flex;
   flex: 1;
   border: none;
@@ -54,7 +53,7 @@ export const Input = styled.input`
 
 export const VisibleButton = styled.button`
   position: absolute;
-  right: 32px;
+  right: 2em;
   background: none;
   border: none;
   display: flex;
@@ -64,7 +63,7 @@ export const VisibleButton = styled.button`
 
 export const Error = styled(Tooltip)`
   position: absolute;
-  left: -32px;
+  left: -2em;
 
   svg {
     margin: 0;

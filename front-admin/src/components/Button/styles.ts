@@ -6,7 +6,7 @@ export const Container = styled.button`
   padding: 16px;
   font-weight: bold;
   font-family: 'Heebo';
-  font-size: 18px;
+  font-size: 1.8rem;
 
   background-color: ${(props) => props.color};
   color: ${(props) => props.theme.colors.white};

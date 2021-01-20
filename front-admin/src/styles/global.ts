@@ -8,29 +8,31 @@ export default createGlobalStyle`
     outline: 0;
   }
 
+  html{
+    font-size: 62.5%;
+  }
+
   body {
     background: #F5F8FA;
     -webkit-font-smoothing: antialiased;
+    font-size: 1.6rem;
   }
 
   body, -moz-user-input, button {
-    font-family: 'Heebo', serif;
-    font-size: 16px;
-  }
-
-  span,p{
     font-family: 'Heebo', serif;
   }
 
   h1, h2, h3, h4, h5, h6, strong {
     font-weight: 500;
-    color: #123952
+    color: #123952;
+    font-family: 'Barlow', 'Heebo', serif;
   }
 
   h1{
-    font-family: 'Barlow', 'Heebo', serif;
-    font-size: 36px;
+    font-size: 3.6rem;
   }
+
+
 
   button{
     cursor: pointer;
