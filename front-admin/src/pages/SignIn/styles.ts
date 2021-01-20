@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { Form as UnformForm } from '@unform/web';
 import Inpt from '../../components/Input';
@@ -117,6 +117,14 @@ export const Checkbox = styled.div<CheckboxProps>`
     justify-content: center;
 
     border: 1px solid #dce2e6;
+
+    ${(props) =>
+      !props.value &&
+      css`
+        svg {
+          display: none;
+        }
+      `}
   }
 `;
 
