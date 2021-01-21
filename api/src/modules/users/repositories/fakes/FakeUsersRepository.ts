@@ -13,6 +13,16 @@ export default class FakeUsersRepository implements IUsersRepository {
     return user;
   }
 
+  public async findById(id: string): Promise<User> {
+    const user = new User();
+    user.id = id;
+    return user;
+  }
+
+  public async save(user: User): Promise<User> {
+    return user;
+  }
+
   public async findByEmail(email: string): Promise<User> {
     const user = new User();
 
