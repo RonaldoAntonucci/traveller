@@ -6,7 +6,7 @@ import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import ListResponse from '@shared/core/ListResponse';
 import User from '@modules/users/domain/User';
 import ListUsersService from '.';
-import InvalidParamsError from './InvalidParamsError';
+import { InvalidParamsError } from './ListUsersErrors';
 
 describe('List Users Service - unit', () => {
   let service: ListUsersService;

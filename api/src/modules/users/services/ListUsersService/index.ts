@@ -4,7 +4,7 @@ import IService from '@shared/core/IService';
 import PaginationParams from '@shared/core/PaginationParams';
 import { inject, injectable } from 'tsyringe';
 import ListResponse from '@shared/core/ListResponse';
-import InvalidParamsError from './InvalidParamsError';
+import { InvalidParamsError } from './ListUsersErrors';
 
 type IRequestDTO = PaginationParams;
 
