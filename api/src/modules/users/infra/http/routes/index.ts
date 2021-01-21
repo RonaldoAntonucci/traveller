@@ -7,6 +7,8 @@ const userRouter = Router();
 
 const userController = new UserController();
 
+userRouter.get('/', userController.find);
+
 userRouter.post('/', CreateUserValidator(), userController.create);
 
 export default userRouter;

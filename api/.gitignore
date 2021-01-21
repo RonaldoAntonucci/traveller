@@ -4,3 +4,4 @@ yarn.lock
 build
 database.json
 coverage
+report*

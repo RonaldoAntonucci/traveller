@@ -2,6 +2,8 @@ import { getRepository, Repository } from 'typeorm';
 
 import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import PaginationParams from '@shared/core/PaginationParams';
+import ListResponse from '@shared/core/ListResponse';
 import UserEntity from '../entities/UserEntity';
 
 export default class UsersRepository implements IUsersRepository {
@@ -31,5 +33,19 @@ export default class UsersRepository implements IUsersRepository {
     await this.ormRepo.save(user);
 
     return user;
+  }
+
+  public async findAndCount({
+    count,
+    order,
+    offset,
+  }: PaginationParams): Promise<ListResponse<UserEntity>> {
+    const [users, total] = await this.ormRepo.findAndCount({
+      order: { id: order },
+      take: count,
+      skip: offset,
+    });
+
+    return new ListResponse<UserEntity>({ data: users, total, count, offset });
   }
 }
