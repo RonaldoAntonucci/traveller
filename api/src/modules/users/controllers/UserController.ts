@@ -7,6 +7,7 @@ import IController from '@shared/core/IController';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateUserService from '../services/CreateUserService';
 import ListUsersService from '../services/ListUsersService';
+import UpdateUserService from '../services/UpdateUserService';
 
 type FindRequest = Request;
 
@@ -17,6 +18,17 @@ type CreateRequest = Request<
     name: string;
     password: string;
     email: string;
+  }
+>;
+
+type UpdateRequest = Request<
+  Record<string, string>,
+  unknown,
+  {
+    name?: string;
+    password?: string;
+    oldPassword?: string;
+    email?: string;
   }
 >;
 
@@ -45,5 +57,23 @@ export default class UserController implements IController<Request, Response> {
     const user = await createUser.execute({ email, name, password });
 
     return res.json(classToClass(user));
+  }
+
+  public async update(req: UpdateRequest, res: Response): Promise<Response> {
+    const { email, name, password, oldPassword } = req.body;
+
+    const { userId } = req.params;
+
+    const updateUser = container.resolve(UpdateUserService);
+
+    const updatedUser = await updateUser.execute({
+      userId,
+      email,
+      name,
+      password,
+      oldPassword,
+    });
+
+    return res.json(classToClass(updatedUser));
   }
 }
