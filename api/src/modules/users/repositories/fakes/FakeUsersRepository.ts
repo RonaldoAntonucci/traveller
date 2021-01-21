@@ -49,7 +49,7 @@ export default class FakeUsersRepository implements IUsersRepository {
     });
   }
 
-  public async delete(): Promise<number | null> {
+  public async delete(): Promise<number | null | undefined> {
     return 1;
   }
 }

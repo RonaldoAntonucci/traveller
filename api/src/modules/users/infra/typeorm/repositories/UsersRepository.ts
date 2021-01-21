@@ -51,11 +51,17 @@ export default class UsersRepository implements IUsersRepository {
     offset,
   }: PaginationParams): Promise<ListResponse<UserEntity>> {
     const [users, total] = await this.ormRepo.findAndCount({
-      order: { id: order },
+      order: { createdAt: order },
       take: count,
       skip: offset,
     });
 
     return new ListResponse<UserEntity>({ data: users, total, count, offset });
+  }
+
+  public async delete(userId: string): Promise<number | null | undefined> {
+    const result = await this.ormRepo.delete({ id: userId });
+
+    return result.affected;
   }
 }

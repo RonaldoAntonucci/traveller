@@ -14,5 +14,5 @@ export default interface IUsersRepository {
 
   save(user: User): Promise<User>;
 
-  delete(userId: string): Promise<number | null>;
+  delete(userId: string): Promise<number | null | undefined>;
 }

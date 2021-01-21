@@ -35,7 +35,7 @@
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --ignore-watch node_modules --no-notify src/index.ts",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest",
     "test:e2e": "jest --testMatch **/*.e2e-spec.ts -i",

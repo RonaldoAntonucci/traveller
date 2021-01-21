@@ -14,4 +14,6 @@ userRouter.post('/', CreateUserValidator(), userController.create);
 
 userRouter.put('/:userId', UpdateUserValidator(), userController.update);
 
+userRouter.delete('/:userId', userController.delete);
+
 export default userRouter;

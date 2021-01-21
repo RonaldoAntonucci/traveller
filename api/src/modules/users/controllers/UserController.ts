@@ -8,6 +8,7 @@ import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateUserService from '../services/CreateUserService';
 import ListUsersService from '../services/ListUsersService';
 import UpdateUserService from '../services/UpdateUserService';
+import DeleteUserService from '../services/DeleteUserService';
 
 type FindRequest = Request;
 
@@ -31,6 +32,8 @@ type UpdateRequest = Request<
     email?: string;
   }
 >;
+
+type DeleteRequest = Request<Record<string, string>>;
 
 export default class UserController implements IController<Request, Response> {
   public async find(req: FindRequest, res: Response): Promise<Response> {
@@ -75,5 +78,15 @@ export default class UserController implements IController<Request, Response> {
     });
 
     return res.json(classToClass(updatedUser));
+  }
+
+  public async delete(req: DeleteRequest, res: Response): Promise<Response> {
+    const { userId } = req.params;
+
+    const deleteUser = container.resolve(DeleteUserService);
+
+    await deleteUser.execute({ userId });
+
+    return res.send();
   }
 }
