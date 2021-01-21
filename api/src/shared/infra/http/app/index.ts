@@ -4,6 +4,7 @@ import 'express-async-errors';
 import '@shared/container';
 
 import express, { Express, Router } from 'express';
+import { errors } from 'celebrate';
 
 import Database from '@shared/infra/database';
 import v1Router from '../api/v1';
@@ -25,6 +26,8 @@ export default class App {
     this.server.use(express.json());
 
     this.server.use('/api/v1', routes);
+
+    this.server.use(errors());
 
     this.server.use(Handler);
 
