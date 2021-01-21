@@ -21,6 +21,7 @@
     "allowJs": true,
     "sourceMap": true,
     "strictNullChecks": true,
+    "typeRoots": ["src/@types","node_modules/@types"]
   },
   "exclude": [
     "coverage",

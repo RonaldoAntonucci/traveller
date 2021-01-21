@@ -3,6 +3,7 @@ import { Router } from 'express';
 
 import UserController from '@modules/users/controllers/UserController';
 import AuthJwtController from '@modules/users/controllers/AuthJwtController';
+import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 import CreateUserValidator from '../validators/CreateUserValidator';
 import UpdateUserValidator from '../validators/UpdateUserValidator';
 import AuthJwtValidator from '../validators/AuthJwtValidator';
@@ -11,9 +12,11 @@ const userRouter = Router();
 
 const userController = new UserController();
 
-userRouter.get('/', userController.find);
-
 userRouter.post('/', CreateUserValidator(), userController.create);
+
+userRouter.use(ensureAuthenticated());
+
+userRouter.get('/', userController.find);
 
 userRouter.put('/:userId', UpdateUserValidator(), userController.update);
 
