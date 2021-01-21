@@ -1,7 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
 import User from '@modules/users/domain/User';
-import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IService from '@shared/core/IService';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';

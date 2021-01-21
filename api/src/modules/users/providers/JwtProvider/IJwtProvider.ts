@@ -1,4 +1,4 @@
-export interface ISignDTO {
+export interface ISignInDTO {
   payload?: string | Record<string, unknown> | Buffer;
   subject: string;
 }
@@ -6,7 +6,7 @@ export interface ISignDTO {
 type T = string | Record<string, unknown>;
 
 export default interface IJwtProvider {
-  sign(data: ISignDTO): string;
+  sign(data: ISignInDTO): string;
 
   verify<K extends T>(token: string): K;
 }

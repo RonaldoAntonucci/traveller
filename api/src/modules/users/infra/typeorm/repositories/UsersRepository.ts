@@ -1,6 +1,6 @@
 import { getRepository, Repository } from 'typeorm';
 
-import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import PaginationParams from '@shared/core/PaginationParams';
 import ListResponse from '@shared/core/ListResponse';

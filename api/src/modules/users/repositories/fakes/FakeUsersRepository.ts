@@ -1,5 +1,5 @@
 import User from '@modules/users/domain/User';
-import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
+import ICreateUserDTO from '@modules/users/dtos/ICreateUserDTO';
 import ListResponse from '@shared/core/ListResponse';
 import PaginationParams from '@shared/core/PaginationParams';
 import IUsersRepository from '../IUsersRepository';
