@@ -1,6 +1,6 @@
 import { inject, injectable } from 'tsyringe';
 
-import User from '@modules/users/domain/user';
+import User from '@modules/users/domain/User';
 import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
 import IService from '@shared/core/IService';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';

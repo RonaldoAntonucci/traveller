@@ -1,4 +1,4 @@
-import User from '@modules/users/domain/user';
+import User from '@modules/users/domain/User';
 import { Exclude } from 'class-transformer';
 import {
   Column,
