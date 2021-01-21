@@ -1,4 +1,4 @@
-import User from '../domain/user';
+import User from '../domain/User';
 import ICreateUserDTO from '../dtos/CreateUserDTO';
 
 export default interface IUsersRepository {

@@ -4,7 +4,8 @@ import FakeUser from '@modules/users/domain/fakes/FakeUser';
 import User from '@modules/users/domain/User';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import CreateUserService from '.';
+import CreateUserService from './CreateUser.service';
+import { EmailAlreadyExistsError } from './CreateUserErrors';
 
 describe('Create User - unit', () => {
   let service: CreateUserService;
@@ -32,5 +33,20 @@ describe('Create User - unit', () => {
     expect(emailInUse).toBeCalledWith(userAttrs.email);
     expect(createUser).toBeCalledWith(userAttrs);
     expect(user).toBeInstanceOf(User);
+  });
+
+  it('should be not able to create a new User if EMAIL already in use.', async () => {
+    const userAttrs = FakeUser();
+
+    emailInUse = jest
+      .spyOn(repo, 'findByEmail')
+      .mockImplementationOnce(async () => new User());
+
+    await expect(service.execute(userAttrs)).rejects.toEqual(
+      new EmailAlreadyExistsError(userAttrs.email),
+    );
+
+    expect(emailInUse).toBeCalledWith(userAttrs.email);
+    expect(createUser).not.toBeCalled();
   });
 });
