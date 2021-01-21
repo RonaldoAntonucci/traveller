@@ -1,0 +1,20 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "",
+    "port": 5432,
+    "username": "",
+    "password": "",
+    "database": "",
+    "entities": [
+      "./src/modules/**/infra/typeorm/entities/*.ts"
+    ],
+    "migrations": [
+      "./src/shared/infra/database/migrations/*.ts"
+    ],
+    "cli": {
+      "migrationsDir": "./src/shared/infra/database/migrations"
+    }
+  }
+]
