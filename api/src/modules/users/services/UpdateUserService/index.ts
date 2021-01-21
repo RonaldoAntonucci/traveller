@@ -4,11 +4,12 @@ import User from '@modules/users/domain/User';
 import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IService from '@shared/core/IService';
-import { EmailAlreadyExistsError } from '../CreateUserService/CreateUserErrors';
 import {
+  EmailAlreadyExistsError,
+  OldPasswordIsRequiredError,
   PasswordNoesNotMatchError,
   UserNotExistsError,
-} from './UpdateUserErrors';
+} from '@modules/users/errors/service';
 
 interface IRequestDTO extends Partial<User> {
   userId: string;
@@ -57,7 +58,7 @@ export default class UpdateUserService
 
     if (password) {
       if (!oldPassword) {
-        throw new PasswordNoesNotMatchError();
+        throw new OldPasswordIsRequiredError();
       }
 
       const checkOldPassword = await this.hashProvider.compareHash(

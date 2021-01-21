@@ -6,8 +6,8 @@ import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepo
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import FakeHashProvider from '@modules/users/providers/HashProvider/FakeHashProvider';
 import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';
+import { EmailAlreadyExistsError } from '@modules/users/errors/service';
 import CreateUserService from '.';
-import { EmailAlreadyExistsError } from './CreateUserErrors';
 
 describe('Create User - unit', () => {
   let service: CreateUserService;

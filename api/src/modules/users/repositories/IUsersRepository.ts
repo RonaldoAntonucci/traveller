@@ -13,4 +13,6 @@ export default interface IUsersRepository {
   findById(id: string): Promise<User | undefined>;
 
   save(user: User): Promise<User>;
+
+  delete(userId: string): Promise<number | null>;
 }

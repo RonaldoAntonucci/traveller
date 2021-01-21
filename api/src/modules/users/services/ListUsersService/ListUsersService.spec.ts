@@ -5,8 +5,8 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import ListResponse from '@shared/core/ListResponse';
 import User from '@modules/users/domain/User';
+import { InvalidParamsError } from '@modules/users/errors/service';
 import ListUsersService from '.';
-import { InvalidParamsError } from './ListUsersErrors';
 
 describe('List Users Service - unit', () => {
   let service: ListUsersService;

@@ -48,4 +48,8 @@ export default class FakeUsersRepository implements IUsersRepository {
       offset,
     });
   }
+
+  public async delete(): Promise<number | null> {
+    return 1;
+  }
 }

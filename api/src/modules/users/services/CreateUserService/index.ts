@@ -5,7 +5,7 @@ import ICreateUserDTO from '@modules/users/dtos/CreateUserDTO';
 import IService from '@shared/core/IService';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';
-import { EmailAlreadyExistsError } from './CreateUserErrors';
+import { EmailAlreadyExistsError } from '@modules/users/errors/service';
 
 @injectable()
 export default class CreateUserService

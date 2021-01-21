@@ -6,12 +6,13 @@ import FakeHashProvider from '@modules/users/providers/HashProvider/FakeHashProv
 import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
-import UpdateUserService from '.';
 import {
   EmailAlreadyExistsError,
+  OldPasswordIsRequiredError,
   PasswordNoesNotMatchError,
   UserNotExistsError,
-} from './UpdateUserErrors';
+} from '@modules/users/errors/service';
+import UpdateUserService from '.';
 
 describe('Update User Service - unit', () => {
   let service: UpdateUserService;
@@ -125,7 +126,7 @@ describe('Update User Service - unit', () => {
         ...userAttrs,
         userId: 'fakeId',
       }),
-    ).rejects.toEqual(new PasswordNoesNotMatchError());
+    ).rejects.toEqual(new OldPasswordIsRequiredError());
 
     expect(checkUser).toBeCalledWith(userAttrs.id);
     expect(checkEmail).toBeCalledWith(userAttrs.email);
