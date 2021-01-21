@@ -1,1 +1,3 @@
-export default './CreateUser.service';
+import Service from './CreateUser.service';
+
+export default Service;

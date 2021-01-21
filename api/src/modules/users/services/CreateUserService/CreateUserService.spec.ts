@@ -4,25 +4,32 @@ import FakeUser from '@modules/users/domain/fakes/FakeUser';
 import User from '@modules/users/domain/User';
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import IUsersRepository from '@modules/users/repositories/IUsersRepository';
+import FakeHashProvider from '@modules/users/providers/HashProvider/FakeHashProvider';
+import IHashProvider from '@modules/users/providers/HashProvider/IHashProvider';
 import CreateUserService from './CreateUser.service';
 import { EmailAlreadyExistsError } from './CreateUserErrors';
 
 describe('Create User - unit', () => {
   let service: CreateUserService;
   let repo: IUsersRepository;
+  let hashProvider: IHashProvider;
 
   let createUser: jest.SpyInstance;
   let emailInUse: jest.SpyInstance;
+  let hashPassword: jest.SpyInstance;
 
   beforeEach(() => {
     repo = new FakeUsersRepository();
-    service = new CreateUserService(repo);
+    hashProvider = new FakeHashProvider();
+    service = new CreateUserService(repo, hashProvider);
 
     createUser = jest.spyOn(repo, 'create');
 
     emailInUse = jest
       .spyOn(repo, 'findByEmail')
       .mockImplementation(async () => undefined);
+
+    hashPassword = jest.spyOn(hashProvider, 'generateHash');
   });
 
   it('should be able to creata a new User', async () => {
@@ -31,6 +38,7 @@ describe('Create User - unit', () => {
     const user = await service.execute(userAttrs);
 
     expect(emailInUse).toBeCalledWith(userAttrs.email);
+    expect(hashPassword).toBeCalledWith(userAttrs.password);
     expect(createUser).toBeCalledWith(userAttrs);
     expect(user).toBeInstanceOf(User);
   });
@@ -47,6 +55,7 @@ describe('Create User - unit', () => {
     );
 
     expect(emailInUse).toBeCalledWith(userAttrs.email);
+    expect(hashPassword).not.toBeCalled();
     expect(createUser).not.toBeCalled();
   });
 });
