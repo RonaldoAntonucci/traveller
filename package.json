@@ -5,7 +5,8 @@
   "repository": "git@github.com:RonaldoAntonucci/traveller.git",
   "author": "Ronaldo Antonucci <ronaldo.antonuccivrb32@yahoo.com.br>",
   "license": "MIT",
-  "scripts":{
+  "scripts": {
     "build:front-admin": "yarn --cwd front-admin build"
-  }
+  },
+  "devDependencies": {}
 }
