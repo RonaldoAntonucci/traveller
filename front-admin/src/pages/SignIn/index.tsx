@@ -29,7 +29,7 @@ const SignIn: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        signIn({ email: data.email, password: data.password });
+        signIn({ email: data.email, password: data.password, remember });
       } catch (err) {
         if (err instanceof ValidationError) {
           const errors = getValidationErrors(err);
@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
         }
       }
     },
-    [signIn],
+    [remember, signIn],
   );
 
   return (

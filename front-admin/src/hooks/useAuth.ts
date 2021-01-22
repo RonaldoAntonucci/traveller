@@ -2,11 +2,12 @@ import { useCallback, useContext, useMemo } from 'react';
 import { AuthContext } from '../contexts/auth';
 import UsersRepository from '../repositories/UsersRepository';
 import User from '../types/user';
-import { login, logout } from '../store/auth';
+import { login, logout, SessionLogin } from '../store/auth';
 
 interface SignInDTO {
   email: string;
   password: string;
+  remember: boolean;
 }
 
 interface UseAuth {
@@ -32,12 +33,16 @@ const useAuth = (): UseAuth => {
   const isAuthenticated = useMemo(() => !!token && !!user, [token, user]);
 
   const signIn = useCallback(
-    ({ email, password }: SignInDTO) => {
+    ({ email, password, remember }: SignInDTO) => {
       UsersRepository.signIn({ email, password }).then((data) => {
         setToken(data.token);
         setUser(data.user);
 
-        login({ user: data.user, token: data.token });
+        if (remember) {
+          login({ user: data.user, token: data.token });
+        } else {
+          SessionLogin({ user: data.user, token: data.token });
+        }
       });
     },
     [setToken, setUser],
