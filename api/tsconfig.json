@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES6",
     "module": "commonjs",
     "outDir": "./dist",
     "rootDir": "./",
@@ -19,9 +19,11 @@
     "emitDecoratorMetadata": true,
     "forceConsistentCasingInFileNames": true,
     "allowJs": true,
-    "sourceMap": true,
+    "sourceMap": false,
     "strictNullChecks": true,
-    "typeRoots": ["src/@types","node_modules/@types"]
+    "typeRoots": ["src/@types","node_modules/@types"],
+    "moduleResolution": "Node",
+    "removeComments": true
   },
   "exclude": [
     "coverage",

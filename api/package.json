@@ -30,6 +30,7 @@
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "pg": "^8.5.1",
     "reflect-metadata": "^0.1.13",
     "ts-node-dev": "^1.1.1",
@@ -40,9 +41,14 @@
     "build": "tsc -p tsconfig.build.json",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --ignore-watch node_modules --no-notify src/index.ts",
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
+    "start:prod": "ts-node -r tsconfig-paths/register dist/index.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest",
     "test:e2e": "jest --testMatch **/*.e2e-spec.ts -i",
     "test:all": "jest --testMatch **/*.*spec.ts --runInBand"
+  },
+  "_moduleAliases":{
+    "@modules": "src/modules",
+    "@shared": "src/shared"
   }
 }
