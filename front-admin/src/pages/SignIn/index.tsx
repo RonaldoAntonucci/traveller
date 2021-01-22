@@ -10,28 +10,36 @@ import schema from './schema';
 
 import * as Styled from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
+import useAuth from '../../hooks/useAuth';
 
 const SignIn: React.FC = () => {
   const { colors } = useTheme();
   const formRef = useRef<FormHandles>(null);
 
+  const { signIn } = useAuth();
+
   const [remember, setRemember] = useState(false);
 
   const checkRemember = useCallback(() => setRemember((prev) => !prev), []);
 
-  const handleSubmit = useCallback(async (data) => {
-    try {
-      formRef.current?.setErrors({});
+  const handleSubmit = useCallback(
+    async (data) => {
+      try {
+        formRef.current?.setErrors({});
 
-      await schema.validate(data, { abortEarly: false });
-    } catch (err) {
-      if (err instanceof ValidationError) {
-        const errors = getValidationErrors(err);
+        await schema.validate(data, { abortEarly: false });
 
-        formRef.current?.setErrors(errors);
+        signIn({ email: data.email, password: data.password });
+      } catch (err) {
+        if (err instanceof ValidationError) {
+          const errors = getValidationErrors(err);
+
+          formRef.current?.setErrors(errors);
+        }
       }
-    }
-  }, []);
+    },
+    [signIn],
+  );
 
   return (
     <Styled.Container>

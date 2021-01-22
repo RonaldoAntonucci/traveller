@@ -5,6 +5,7 @@ import '@shared/container';
 
 import express, { Express, Router } from 'express';
 import { errors } from 'celebrate';
+import cors from 'cors';
 
 import Database from '@shared/infra/database';
 import v1Router from '../api/v1';
@@ -24,6 +25,7 @@ export default class App {
     this.server = express();
 
     this.server.use(express.json());
+    this.server.use(cors());
 
     this.server.use('/api/v1', routes);
 
