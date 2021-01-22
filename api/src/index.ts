@@ -1,4 +1,4 @@
-import App from './shared/infra/http/app';
+import App from '@shared/infra/http/app';
 
 const app = new App();
 

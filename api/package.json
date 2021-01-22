@@ -4,6 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-decorators": "^7.12.12",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-typescript": "^7.12.7",
     "@types/bcryptjs": "^2.4.2",
     "@types/cors": "^2.8.9",
     "@types/express": "^4.17.11",
@@ -11,6 +18,8 @@
     "@types/jsonwebtoken": "^8.5.0",
     "@typescript-eslint/eslint-plugin": "^4.14.0",
     "@typescript-eslint/parser": "^4.14.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "babel-plugin-transform-typescript-metadata": "^0.3.1",
     "eslint": "^7.18.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-config-prettier": "^7.2.0",
@@ -38,7 +47,7 @@
     "typeorm": "^0.2.30"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "babel src --extensions \".js,.ts\" --out-dir dist --copy-files",
     "dev:server": "ts-node-dev -r tsconfig-paths/register --inspect --ignore-watch node_modules --no-notify src/index.ts",
     "start": "ts-node -r tsconfig-paths/register src/index.ts",
     "start:prod": "ts-node -r tsconfig-paths/register dist/index.js",
@@ -46,9 +55,5 @@
     "test": "jest",
     "test:e2e": "jest --testMatch **/*.e2e-spec.ts -i",
     "test:all": "jest --testMatch **/*.*spec.ts --runInBand"
-  },
-  "_moduleAliases":{
-    "@modules": "src/modules",
-    "@shared": "src/shared"
   }
 }
