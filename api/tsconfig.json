@@ -3,16 +3,22 @@
     "target": "ES6",
     "module": "commonjs",
     "outDir": "./dist",
-    "rootDir": "./",
+    "rootDir": "./src",
     "strict": true,
     "strictPropertyInitialization": false,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "baseUrl": "./src",
     "paths": {
-      "@modules/*": ["modules/*"],
-      "@config/*": ["config/*"],
-      "@shared/*": ["shared/*"]
+      "@modules/*": [
+        "modules/*"
+      ],
+      "@config/*": [
+        "config/*"
+      ],
+      "@shared/*": [
+        "shared/*"
+      ]
     },
     "esModuleInterop": true,
     "experimentalDecorators": true,
@@ -21,7 +27,10 @@
     "allowJs": true,
     "sourceMap": false,
     "strictNullChecks": true,
-    "typeRoots": ["src/@types","node_modules/@types"],
+    "typeRoots": [
+      "src/@types",
+      "node_modules/@types"
+    ],
     "moduleResolution": "Node",
     "removeComments": true
   },
@@ -31,6 +40,9 @@
     "node_modules",
     ".vscode",
     "tmp",
-    "jest.config.js"
+    "jest.config.ts"
+  ],
+  "include": [
+    "src/**/*.ts"
   ]
 }
