@@ -51,7 +51,12 @@ const SignIn: React.FC = () => {
             <h1>Fazer login</h1>
 
             <div className="inputContainer">
-              <Styled.Input name="email" placeholder="E-mail" label="E-mail" />
+              <Styled.Input
+                name="email"
+                placeholder="E-mail"
+                label="E-mail"
+                type="email"
+              />
               <Styled.Input
                 name="password"
                 placeholder="Senha"
