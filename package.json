@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "build:front-admin": "yarn --cwd front-admin build",
-    "build:api": "yarn --cwd api build"
+    "build:api": "yarn --cwd api build",
+    "test:api": "yarn --cwd api test"
   },
   "devDependencies": {}
 }

@@ -25,6 +25,10 @@ jobs:
       # instalar as dependências NPM/Yarn
       - name: Install dependencies
         run: cd api && yarn
+
+      # Executar os testes
+      - name: testes
+        run: yarn test:api
         
       # Executar a build 
       - name: Run build
