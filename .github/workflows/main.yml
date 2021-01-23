@@ -56,7 +56,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
           source: "./api,!./api/node_modules,!node_modules"
-          target: "app/traveller/api"
+          target: "app/traveller"
 
       # Executar "yarn" na Digital Ocean
       - name: Install dependencie on DO

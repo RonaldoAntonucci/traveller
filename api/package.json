@@ -56,6 +56,7 @@
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
     "test": "jest",
     "test:e2e": "jest --testMatch **/*.e2e-spec.ts -i",
-    "test:all": "jest --testMatch **/*.*spec.ts --runInBand"
+    "test:all": "jest --testMatch **/*.*spec.ts --runInBand",
+    "migration:run": "yarn typeorm migration:run"
   }
 }
