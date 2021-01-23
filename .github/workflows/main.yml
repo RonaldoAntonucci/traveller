@@ -28,7 +28,7 @@ jobs:
         
       # Executar a build 
       - name: Run build
-        run: yarn build
+        run: yarn build:api
         
       # Copiar a pasta dist para dentro da Digital Ocean
       - name: copy dist to Digital Ocean
