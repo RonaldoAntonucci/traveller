@@ -55,8 +55,8 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
-          source: ".,!node_modules"
-          target: "app/traveller"
+          source: "./api,!./api/node_modules,!node_modules"
+          target: "app/traveller/api"
         
       # Substituir o código existente na pasta "dist" pelo novo código
       # Executar "yarn" na Digital Ocean
