@@ -6,7 +6,8 @@
   "author": "Ronaldo Antonucci <ronaldo.antonuccivrb32@yahoo.com.br>",
   "license": "MIT",
   "scripts": {
-    "build:front-admin": "yarn --cwd front-admin build"
+    "build:front-admin": "yarn --cwd front-admin build",
+    "build:api": "yarn --cwd api build"
   },
   "devDependencies": {}
 }
