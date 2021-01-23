@@ -55,7 +55,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
-          source: "."
+          source: ".,!node_modules"
           target: "app/traveller"
         
       # Substituir o código existente na pasta "dist" pelo novo código
