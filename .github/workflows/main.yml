@@ -72,17 +72,17 @@ jobs:
             yarn
 
       # Executar as migrations do TypeOrm
-      - name: Run migrations
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          port: ${{ secrets.SSH_PORT }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_PASS }}
-          script: |
-            cd ~/app/traveller/api
-            yarn typeorm migration:run
+      # - name: Run migrations
+      #   uses: appleboy/ssh-action@master
+      #   with:
+      #     host: ${{ secrets.SSH_HOST }}
+      #     username: ${{ secrets.SSH_USER }}
+      #     port: ${{ secrets.SSH_PORT }}
+      #     key: ${{ secrets.SSH_KEY }}
+      #     passphrase: ${{ secrets.SSH_PASS }}
+      #     script: |
+      #       cd ~/app/traveller/api
+      #       yarn typeorm migration:run
 
       # Restart no servidor Node.js
       - name: Restart server
