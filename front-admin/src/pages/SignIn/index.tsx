@@ -11,12 +11,14 @@ import schema from './schema';
 import * as Styled from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
 import useAuth from '../../hooks/useAuth';
+import useLoading from '../../hooks/useLoading';
 
 const SignIn: React.FC = () => {
   const { colors } = useTheme();
   const formRef = useRef<FormHandles>(null);
 
   const { signIn } = useAuth();
+  const { setLoading, loading } = useLoading();
 
   const [remember, setRemember] = useState(false);
 
@@ -24,21 +26,30 @@ const SignIn: React.FC = () => {
 
   const handleSubmit = useCallback(
     async (data) => {
+      if (loading) {
+        return;
+      }
+
       try {
         formRef.current?.setErrors({});
 
+        setLoading(true);
+
         await schema.validate(data, { abortEarly: false });
 
-        signIn({ email: data.email, password: data.password, remember });
+        await signIn({ email: data.email, password: data.password, remember });
+
+        setLoading(false);
       } catch (err) {
         if (err instanceof ValidationError) {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
         }
+        setLoading(false);
       }
     },
-    [remember, signIn],
+    [loading, remember, setLoading, signIn],
   );
 
   return (

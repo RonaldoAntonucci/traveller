@@ -9,3 +9,4 @@ report*
 database.prod.json
 ormconfig.json
 yarn-error.log
+ormconfig.js

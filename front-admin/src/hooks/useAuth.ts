@@ -11,7 +11,7 @@ interface SignInDTO {
 }
 
 interface UseAuth {
-  signIn(data: SignInDTO): void;
+  signIn(data: SignInDTO): Promise<void>;
   signOut(): void;
   token: string | null;
   user: User | null;
@@ -33,8 +33,8 @@ const useAuth = (): UseAuth => {
   const isAuthenticated = useMemo(() => !!token && !!user, [token, user]);
 
   const signIn = useCallback(
-    ({ email, password, remember }: SignInDTO) => {
-      UsersRepository.signIn({ email, password }).then((data) => {
+    async ({ email, password, remember }: SignInDTO) => {
+      return UsersRepository.signIn({ email, password }).then((data) => {
         setToken(data.token);
         setUser(data.user);
 
