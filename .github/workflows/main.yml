@@ -82,10 +82,10 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
             cd ~/app/traveller/api
-            ./node_modules/.bin/typeorm migration:run
+            yarn migration:run
 
       # Restart no servidor Node.js
-      - name: Run migrations
+      - name: Restart server
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -93,8 +93,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASS }}
-          script: |
-            pm2 restart traveller-api
+          script: pm2 restart traveller-api
         
       
       
