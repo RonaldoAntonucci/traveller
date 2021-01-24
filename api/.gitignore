@@ -7,3 +7,4 @@ database.json
 coverage
 report*
 database.prod.json
+ormconfig.json
