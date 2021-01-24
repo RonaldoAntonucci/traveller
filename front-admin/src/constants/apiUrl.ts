@@ -1,3 +1,3 @@
-const apiUrl = 'http://192.168.0.107:3333/api/v1';
+const apiUrl = process.env.REACT_APP_TRAVELLER_API;
 
 export default apiUrl;

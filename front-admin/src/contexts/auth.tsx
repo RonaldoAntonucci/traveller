@@ -30,6 +30,8 @@ const AuthProvider: React.FC = ({ children }) => {
 
     setToken(token);
     setUser(user);
+
+    console.log(process.env.REACT_APP_HOST);
   }, [setToken, setUser]);
 
   return (
