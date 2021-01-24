@@ -12,6 +12,7 @@ import * as Styled from './styles';
 import getValidationErrors from '../../utils/getValidationErrors';
 import useAuth from '../../hooks/useAuth';
 import useLoading from '../../hooks/useLoading';
+import useToast from '../../hooks/useToast';
 
 const SignIn: React.FC = () => {
   const { colors } = useTheme();
@@ -19,6 +20,7 @@ const SignIn: React.FC = () => {
 
   const { signIn } = useAuth();
   const { setLoading, loading } = useLoading();
+  const { addToast } = useToast();
 
   const [remember, setRemember] = useState(false);
 
@@ -37,7 +39,11 @@ const SignIn: React.FC = () => {
 
         await schema.validate(data, { abortEarly: false });
 
-        await signIn({ email: data.email, password: data.password, remember });
+        await signIn({
+          email: data.email,
+          password: data.password,
+          remember,
+        });
 
         setLoading(false);
       } catch (err) {
@@ -45,11 +51,19 @@ const SignIn: React.FC = () => {
           const errors = getValidationErrors(err);
 
           formRef.current?.setErrors(errors);
+        } else {
+          addToast({
+            type: 'error',
+            title: 'Erro na autenticação',
+            description:
+              'Ocorreu um erro ao fazer login, cheque as credenciais.',
+          });
         }
+
         setLoading(false);
       }
     },
-    [loading, remember, setLoading, signIn],
+    [addToast, loading, remember, setLoading, signIn],
   );
 
   return (
