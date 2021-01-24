@@ -82,7 +82,7 @@ jobs:
           passphrase: ${{ secrets.SSH_PASS }}
           script: |
             cd ~/app/traveller/api
-            ./node_modules/.bin/typeorm migration:run
+            yarn typeorm migration:run
 
       # Restart no servidor Node.js
       - name: Restart server
