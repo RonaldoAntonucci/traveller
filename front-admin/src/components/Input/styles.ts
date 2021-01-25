@@ -25,7 +25,7 @@ export const Container = styled.div<ContainerProps>`
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 1.4em;
+  padding: 1em;
   background-color: #fff;
   position: relative;
 
