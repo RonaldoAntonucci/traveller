@@ -10,6 +10,30 @@ const Dashboard: React.FC = () => {
       <button type="button" onClick={signOut}>
         LOGOUT
       </button>
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>{' '}
+      <h1>DASHBOARD</h1> <h1>DASHBOARD</h1> <h1>DASHBOARD</h1>
     </div>
   );
 };

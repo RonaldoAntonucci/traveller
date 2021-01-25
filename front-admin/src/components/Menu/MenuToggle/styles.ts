@@ -1,5 +1,7 @@
 import styled, { css } from 'styled-components';
 
+import LogoSVG from '../../../assets/logo.svg';
+
 interface ContainerProps {
   show: boolean;
 }
@@ -63,6 +65,38 @@ export const Container = styled.div<ContainerProps>`
       justify-content: center;
       align-items: center;
     `}
+
+  @media(min-width: 768px) {
+    height: 100%;
+
+    nav {
+      display: block;
+      height: 100%;
+    }
+
+    span {
+      display: none;
+    }
+
+    li button {
+      border: 0;
+    }
+
+    ul {
+      display: flex;
+      height: 100%;
+      flex-direction: column;
+      justify-content: center;
+
+      li:first-child {
+        margin-bottom: auto;
+      }
+
+      li:last-child {
+        margin-top: auto;
+      }
+    }
+  }
 `;
 
 export const ToggleButton = styled.button<ContainerProps>`
@@ -72,4 +106,16 @@ export const ToggleButton = styled.button<ContainerProps>`
   top: 0;
 
   transition-duration: 0.3s;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+`;
+
+export const Logo = styled.img.attrs(() => ({
+  src: LogoSVG,
+  alt: 'Traveller',
+}))`
+  height: 56px;
+  width: 100%;
 `;

@@ -7,10 +7,13 @@ import { GoThreeBars } from 'react-icons/go';
 import { RiShutDownLine } from 'react-icons/ri';
 
 import * as Styled from './styles';
+import useAuth from '../../../hooks/useAuth';
 
 const MenuButtons: React.FC = () => {
   const { colors } = useTheme();
   const [show, setShow] = useState(false);
+
+  const { signOut } = useAuth();
 
   const toggleMenu = useCallback(() => setShow((prev) => !prev), []);
 
@@ -33,6 +36,9 @@ const MenuButtons: React.FC = () => {
       <nav>
         <ul>
           <li>
+            <Styled.Logo />
+          </li>
+          <li>
             <button type="button">
               <FiMapPin color={colors.white} size={24} />
               <span>Cidade</span>
@@ -53,7 +59,7 @@ const MenuButtons: React.FC = () => {
           </li>
 
           <li>
-            <button type="button">
+            <button type="button" onClick={signOut}>
               <RiShutDownLine color={colors.white} size={24} />
             </button>
           </li>
