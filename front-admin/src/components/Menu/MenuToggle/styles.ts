@@ -82,6 +82,12 @@ export const Container = styled.div<ContainerProps>`
       border: 0;
     }
 
+    li + li {
+      :hover {
+        background-color: rgba(0, 0, 0, 0.1);
+      }
+    }
+
     ul {
       display: flex;
       height: 100%;
