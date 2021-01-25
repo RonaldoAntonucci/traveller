@@ -12,7 +12,7 @@ export const Container = styled.div<ContainerProps>`
 
   nav {
     display: ${(props) => (props.show ? 'block' : 'none')};
-    animation: ${appearFromTop(250)} 2s;
+    //animation: ${appearFromTop(250)} 2s;
   }
 
   ul {
