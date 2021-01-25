@@ -1,6 +1,7 @@
 import React from 'react';
+import { useTheme } from 'styled-components';
 
-import { Container } from './styles';
+import { Container, Span } from './styles';
 
 interface TooltipProps {
   title: string;
@@ -8,10 +9,12 @@ interface TooltipProps {
 }
 
 const Tooltip: React.FC<TooltipProps> = ({ title, className, children }) => {
+  const { colors } = useTheme();
+
   return (
     <Container className={className}>
       {children}
-      <span>{title}</span>
+      <Span style={{ color: colors.white }}>{title}</Span>
     </Container>
   );
 };
