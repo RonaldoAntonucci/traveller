@@ -9,7 +9,7 @@ import Dashboard from '../pages/Dashboard';
 const Routes: React.FC = () => {
   return (
     <Switch>
-      <Route path="/" exact component={SignIn} />
+      <Route path="/" exact component={SignIn} disableMenu />
       <Route path="/dashboard" component={Dashboard} isPrivate />
     </Switch>
   );
