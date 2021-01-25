@@ -16,6 +16,7 @@ export default class CreateCitiesTable1611607797747
         name: 'name',
         type: 'varchar',
         isNullable: false,
+        isUnique: true,
       },
       {
         name: 'image',

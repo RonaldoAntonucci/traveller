@@ -1,5 +1,6 @@
 import City from '@modules/cities/domain/City';
 import ICreateCityDTO from '@modules/cities/dtos/ICreateCityDTO';
+import { NameAlreadyExistsError } from '@modules/cities/errors/service';
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
 import IService from '@shared/core/IService';
 import { inject, injectable } from 'tsyringe';
@@ -17,6 +18,12 @@ export default class CreateCityService
     image,
     name,
   }: ICreateCityDTO): Promise<City> {
+    const nameExists = await this.citiesRepo.findByName(name);
+
+    if (nameExists) {
+      throw new NameAlreadyExistsError(name);
+    }
+
     const city = await this.citiesRepo.create({ description, image, name });
 
     return city;

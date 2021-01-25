@@ -21,4 +21,10 @@ export default class CitiesRepository implements ICitiesRepository {
 
     return city;
   }
+
+  public async findByName(name: string): Promise<CityEntity | undefined> {
+    const city = await this.ormRepo.findOne({ name });
+
+    return city;
+  }
 }
