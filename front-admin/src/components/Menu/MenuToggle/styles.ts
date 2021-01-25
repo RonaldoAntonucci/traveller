@@ -1,6 +1,7 @@
 import styled, { css } from 'styled-components';
 
 import LogoSVG from '../../../assets/logo.svg';
+import appearFromTop from '../../../styles/appearFromTop';
 
 interface ContainerProps {
   show: boolean;
@@ -11,6 +12,7 @@ export const Container = styled.div<ContainerProps>`
 
   nav {
     display: ${(props) => (props.show ? 'block' : 'none')};
+    animation: ${appearFromTop(250)} 2s;
   }
 
   ul {
@@ -40,10 +42,6 @@ export const Container = styled.div<ContainerProps>`
 
   li + li {
     margin-top: 16px;
-  }
-
-  nav {
-    display: ${(props) => (props.show ? 'flex' : 'none')};
   }
 
   ${(props) =>
@@ -124,4 +122,9 @@ export const Logo = styled.img.attrs(() => ({
 }))`
   height: 56px;
   width: 100%;
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
 `;
