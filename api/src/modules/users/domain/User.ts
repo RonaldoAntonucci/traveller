@@ -1,22 +1,9 @@
-export interface IUserProps {
-  id?: string;
-  name: string;
-  email: string;
-  password: string;
-  updatedAt?: Date;
-  createdAt?: Date;
-}
+import Entity from '@shared/domain/Entity';
 
-export default class User implements IUserProps {
-  id?: string;
-
+export default class User extends Entity {
   name: string;
 
   email: string;
 
   password: string;
-
-  updatedAt?: Date;
-
-  createdAt?: Date;
 }
