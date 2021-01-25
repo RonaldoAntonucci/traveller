@@ -5,6 +5,7 @@ import Button from '../../components/Button';
 import * as Styled from './styles';
 
 import Card from './Card';
+import useCities from '../../hooks/useCities';
 
 interface City {
   id: string;
@@ -17,47 +18,11 @@ const Dashboard: React.FC = () => {
   const { colors } = useTheme();
   const headerRef = useRef(null);
 
-  const [cities, setCities] = useState<City[] | null>(null);
+  const { cities, loadCities } = useCities();
 
   useEffect(() => {
-    setCities([
-      {
-        id: '1',
-        name: 'Águas Mornas',
-        locals: 13,
-        image:
-          'https://hweb-upload.s3-sa-east-1.amazonaws.com/587fc4cec19a4713c4c007d7/af3c29b0b50a4a6aa134f44946ca0ffc.jpg',
-      },
-      {
-        id: '15',
-        name: 'Bombinhas',
-        locals: 21,
-        image:
-          'https://hweb-upload.s3-sa-east-1.amazonaws.com/587fc4cec19a4713c4c007d7/af3c29b0b50a4a6aa134f44946ca0ffc.jpg',
-      },
-      {
-        id: '14',
-        name: 'Blumenau',
-        locals: 22,
-        image:
-          'https://hweb-upload.s3-sa-east-1.amazonaws.com/587fc4cec19a4713c4c007d7/af3c29b0b50a4a6aa134f44946ca0ffc.jpg',
-      },
-      {
-        id: '13',
-        name: 'Florianópolis',
-        locals: 98,
-        image:
-          'https://hweb-upload.s3-sa-east-1.amazonaws.com/587fc4cec19a4713c4c007d7/af3c29b0b50a4a6aa134f44946ca0ffc.jpg',
-      },
-      {
-        id: '12',
-        name: 'Imbituba',
-        locals: 61,
-        image:
-          'https://hweb-upload.s3-sa-east-1.amazonaws.com/587fc4cec19a4713c4c007d7/af3c29b0b50a4a6aa134f44946ca0ffc.jpg',
-      },
-    ]);
-  }, []);
+    loadCities();
+  }, [loadCities]);
 
   return (
     <Styled.Container>
