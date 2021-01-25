@@ -11,6 +11,7 @@ export const Container = styled.div`
   top: 0;
 
   position: sticky;
+  z-index: 3;
 
   button {
     border: 0;

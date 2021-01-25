@@ -38,6 +38,10 @@ export default createGlobalStyle`
     cursor: pointer;
   }
 
+  ul{
+    list-style: none;
+  }
+
   .light, .dark {
      display: none;
   }
