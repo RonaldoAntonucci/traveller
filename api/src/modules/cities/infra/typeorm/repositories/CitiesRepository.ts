@@ -1,5 +1,7 @@
 import ICreateCityDTO from '@modules/cities/dtos/ICreateCityDTO';
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
+import ListResponse from '@shared/core/ListResponse';
+import PaginationParams from '@shared/core/PaginationParams';
 import { getRepository, Repository } from 'typeorm';
 import CityEntity from '../entities/CityEntity';
 
@@ -26,5 +28,19 @@ export default class CitiesRepository implements ICitiesRepository {
     const city = await this.ormRepo.findOne({ name });
 
     return city;
+  }
+
+  public async findAndCount({
+    count,
+    order,
+    offset,
+  }: PaginationParams): Promise<ListResponse<CityEntity>> {
+    const [cities, total] = await this.ormRepo.findAndCount({
+      order: { createdAt: order },
+      take: count,
+      skip: offset,
+    });
+
+    return new ListResponse<CityEntity>({ data: cities, total, count, offset });
   }
 }
