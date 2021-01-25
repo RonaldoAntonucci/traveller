@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import * as Styled from './styles';
 import MenuToggle from './MenuToggle';
@@ -11,4 +11,4 @@ const Menu: React.FC = () => {
   );
 };
 
-export default Menu;
+export default memo(Menu);

@@ -53,10 +53,4 @@ export default createGlobalStyle`
       display: block;
     }
   }
-
-  @media (min-width: 768px){
-    #root{
-      display: flex;
-    }
-  }
 `;
