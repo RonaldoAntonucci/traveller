@@ -7,8 +7,10 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
 import CitiesRepository from '@modules/cities/infra/typeorm/repositories/CitiesRepository';
+import IStorageProvider from '@modules/cities/providers/StorageProvider/IStorageProvider';
 import BCryptHashProvider from './infra/providers/BCryptHashProvider';
 import JsonWebTokenProvider from './infra/providers/JsonWebTokenProvider';
+import DiskStorageProvider from './infra/providers/DiskStorageProvider';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -23,3 +25,8 @@ container.registerSingleton<ICitiesRepository>(
 container.registerSingleton<IHashProvider>('HashProvider', BCryptHashProvider);
 
 container.registerSingleton<IJwtProvider>('JwtProvider', JsonWebTokenProvider);
+
+container.registerSingleton<IStorageProvider>(
+  'StorageProvider',
+  DiskStorageProvider,
+);
