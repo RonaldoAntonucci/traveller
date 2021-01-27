@@ -8,6 +8,7 @@ import uploadConfig from '@config/upload';
 import UpdateCityImageController from '@modules/cities/controllers/UpdateCItyImageController';
 import CreateCityValidator from '../validators/CreateCityValidator';
 import FileValidator from '../validators/FileValidator';
+import UpdateCityValidator from '../validators/UpdateCityValidator';
 
 const citiesRouter = Router();
 
@@ -30,7 +31,7 @@ citiesRouter.post(
   cityController.create,
 );
 
-citiesRouter.put('/:cityId', cityController.update);
+citiesRouter.put('/:cityId', UpdateCityValidator(), cityController.update);
 
 citiesRouter.delete('/:cityId', cityController.delete);
 

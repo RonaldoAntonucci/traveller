@@ -5,8 +5,8 @@ export default (): RequestHandler =>
   celebrate(
     {
       [Segments.BODY]: {
-        name: Joi.string().min(3).required(),
-        description: Joi.string().min(3).max(392).required(),
+        name: Joi.string().min(3),
+        description: Joi.string().min(3).max(392),
       },
     },
     { abortEarly: false },
