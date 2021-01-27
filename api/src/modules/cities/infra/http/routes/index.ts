@@ -5,12 +5,14 @@ import multer from 'multer';
 import CityController from '@modules/cities/controllers/CityController';
 import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 import uploadConfig from '@config/upload';
+import UpdateCityImageController from '@modules/cities/controllers/UpdateCItyImageController';
 import CreateCityValidator from '../validators/CreateCityValidator';
 import FileValidator from '../validators/FileValidator';
 
 const citiesRouter = Router();
 
 const cityController = new CityController();
+const updateCityImageController = new UpdateCityImageController();
 
 const upload = multer(uploadConfig);
 
@@ -31,5 +33,12 @@ citiesRouter.post(
 citiesRouter.put('/:cityId', cityController.update);
 
 citiesRouter.delete('/:cityId', cityController.delete);
+
+citiesRouter.patch(
+  '/image/:cityId',
+  upload.single('image'),
+  FileValidator(),
+  updateCityImageController.update,
+);
 
 export { citiesRouter };
