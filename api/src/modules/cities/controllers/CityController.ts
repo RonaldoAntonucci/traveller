@@ -7,6 +7,7 @@ import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateCityService from '../services/CreateCityService';
 import ListCitiesService from '../services/ListCitiesService';
 import ShowCityService from '../services/ShowCityService';
+import DeleteCityService from '../services/DeleteCityService';
 
 type FindRequest = Request;
 
@@ -20,6 +21,8 @@ type CreateRequest = Request<
 >;
 
 type ShowRequest = Request<Record<string, string>>;
+
+type DeleteRequest = Request<Record<string, string>>;
 
 export default class CityController implements IController<Request, Response> {
   public async index(req: FindRequest, res: Response): Promise<Response> {
@@ -61,5 +64,15 @@ export default class CityController implements IController<Request, Response> {
     });
 
     return res.json(classToClass(city));
+  }
+
+  public async delete(req: DeleteRequest, res: Response): Promise<Response> {
+    const { cityId } = req.params;
+
+    const deleteCity = container.resolve(DeleteCityService);
+
+    await deleteCity.execute({ cityId });
+
+    return res.send();
   }
 }
