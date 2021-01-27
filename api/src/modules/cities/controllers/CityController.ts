@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import IController from '@shared/core/IController';
-import { container } from 'tsyringe';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateCityService from '../services/CreateCityService';
 import ListCitiesService from '../services/ListCitiesService';
@@ -36,11 +36,16 @@ export default class CityController implements IController<Request, Response> {
   }
 
   public async create(req: CreateRequest, res: Response): Promise<Response> {
-    const { description, name, image } = req.body;
+    const { description, name } = req.body;
+    const image = req.file.filename;
 
     const createCity = container.resolve(CreateCityService);
 
-    const city = await createCity.execute({ name, description, image });
+    const city = await createCity.execute({
+      name,
+      description,
+      image,
+    });
 
     return res.json(city);
   }

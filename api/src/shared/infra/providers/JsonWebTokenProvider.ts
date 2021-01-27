@@ -4,7 +4,7 @@ import { injectable } from 'tsyringe';
 import IJwtProvider, {
   ISignInDTO,
 } from '@modules/users/providers/JwtProvider/IJwtProvider';
-import auth from '@shared/config/auth';
+import auth from '@config/auth';
 
 type T = string | Record<string, unknown>;
 
