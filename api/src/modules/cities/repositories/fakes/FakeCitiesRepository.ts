@@ -13,6 +13,12 @@ export default class FakeCitiesRepository implements ICitiesRepository {
     return city;
   }
 
+  public async findById(id: string): Promise<City | undefined> {
+    const city = new City();
+    city.id = id;
+    return city;
+  }
+
   public async findByName(name: string): Promise<City | undefined> {
     const city = new City();
     city.name = name;
@@ -35,5 +41,13 @@ export default class FakeCitiesRepository implements ICitiesRepository {
       count,
       offset,
     });
+  }
+
+  public async save(city: City): Promise<City> {
+    return city;
+  }
+
+  public async delete(): Promise<number | null | undefined> {
+    return 1;
   }
 }

@@ -24,6 +24,12 @@ export default class CitiesRepository implements ICitiesRepository {
     return city;
   }
 
+  public async findById(id: string): Promise<CityEntity | undefined> {
+    const city = await this.ormRepo.findOne({ id });
+
+    return city;
+  }
+
   public async findByName(name: string): Promise<CityEntity | undefined> {
     const city = await this.ormRepo.findOne({ name });
 
@@ -42,5 +48,15 @@ export default class CitiesRepository implements ICitiesRepository {
     });
 
     return new ListResponse<CityEntity>({ data: cities, total, count, offset });
+  }
+
+  public async save(city: CityEntity): Promise<CityEntity> {
+    return this.ormRepo.save(city);
+  }
+
+  public async delete(cityId: string): Promise<number | null | undefined> {
+    const result = await this.ormRepo.delete({ id: cityId });
+
+    return result.affected;
   }
 }
