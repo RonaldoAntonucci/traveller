@@ -8,6 +8,7 @@ import { errors } from 'celebrate';
 import cors from 'cors';
 
 import Database from '@shared/infra/database';
+import upload from '@config/upload';
 import v1Router from '../api/v1';
 import Handler from '../util/Handler';
 
@@ -26,6 +27,8 @@ export default class App {
 
     this.server.use(express.json());
     this.server.use(cors());
+
+    this.server.use('/files', express.static(upload.uploadsFolder));
 
     this.server.use('/api/v1', routes);
 

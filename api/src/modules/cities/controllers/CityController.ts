@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
+import { classToClass } from 'class-transformer';
 
 import IController from '@shared/core/IController';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
@@ -14,7 +15,6 @@ type CreateRequest = Request<
   {
     name: string;
     description: string;
-    image: string;
   }
 >;
 
@@ -32,7 +32,7 @@ export default class CityController implements IController<Request, Response> {
 
     const { data, total } = await findCities.execute(params);
 
-    return res.json({ data, total });
+    return res.json({ data: classToClass(data), total });
   }
 
   public async create(req: CreateRequest, res: Response): Promise<Response> {

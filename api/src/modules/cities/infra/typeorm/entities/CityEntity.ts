@@ -1,4 +1,5 @@
 import City from '@modules/cities/domain/City';
+import { Expose } from 'class-transformer';
 import {
   Column,
   CreateDateColumn,
@@ -26,4 +27,9 @@ export default class CityEntity extends City {
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
+
+  @Expose({ name: 'image_url' })
+  get getImageUrl(): string | null {
+    return this.image ? `${process.env.APP_API_URL}/files/${this.image}` : null;
+  }
 }
