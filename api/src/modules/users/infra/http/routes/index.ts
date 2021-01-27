@@ -16,7 +16,7 @@ userRouter.post('/', CreateUserValidator(), userController.create);
 
 userRouter.use(ensureAuthenticated());
 
-userRouter.get('/', userController.find);
+userRouter.get('/', userController.index);
 
 userRouter.put('/:userId', UpdateUserValidator(), userController.update);
 

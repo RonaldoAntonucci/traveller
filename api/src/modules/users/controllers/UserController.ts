@@ -36,7 +36,7 @@ type UpdateRequest = Request<
 type DeleteRequest = Request<Record<string, string>>;
 
 export default class UserController implements IController<Request, Response> {
-  public async find(req: FindRequest, res: Response): Promise<Response> {
+  public async index(req: FindRequest, res: Response): Promise<Response> {
     const findUsers = container.resolve(ListUsersService);
 
     const { offset, count, order } = req.query;
@@ -49,7 +49,7 @@ export default class UserController implements IController<Request, Response> {
 
     const { data, total } = await findUsers.execute(params);
 
-    return res.json({ data, total });
+    return res.json({ data: classToClass(data), total });
   }
 
   public async create(req: CreateRequest, res: Response): Promise<Response> {

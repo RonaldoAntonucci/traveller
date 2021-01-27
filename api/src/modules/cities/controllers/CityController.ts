@@ -6,6 +6,7 @@ import IController from '@shared/core/IController';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateCityService from '../services/CreateCityService';
 import ListCitiesService from '../services/ListCitiesService';
+import ShowCityService from '../services/ShowCityService';
 
 type FindRequest = Request;
 
@@ -18,8 +19,10 @@ type CreateRequest = Request<
   }
 >;
 
+type ShowRequest = Request<Record<string, string>>;
+
 export default class CityController implements IController<Request, Response> {
-  public async find(req: FindRequest, res: Response): Promise<Response> {
+  public async index(req: FindRequest, res: Response): Promise<Response> {
     const findCities = container.resolve(ListCitiesService);
 
     const { offset, count, order } = req.query;
@@ -35,6 +38,16 @@ export default class CityController implements IController<Request, Response> {
     return res.json({ data: classToClass(data), total });
   }
 
+  public async show(req: ShowRequest, res: Response): Promise<Response> {
+    const { cityId } = req.params;
+
+    const showCity = container.resolve(ShowCityService);
+
+    const city = await showCity.execute({ cityId });
+
+    return res.json(classToClass(city));
+  }
+
   public async create(req: CreateRequest, res: Response): Promise<Response> {
     const { description, name } = req.body;
     const image = req.file.filename;
@@ -47,6 +60,6 @@ export default class CityController implements IController<Request, Response> {
       image,
     });
 
-    return res.json(city);
+    return res.json(classToClass(city));
   }
 }

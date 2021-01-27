@@ -16,7 +16,9 @@ const upload = multer(uploadConfig);
 
 citiesRouter.use(ensureAuthenticated());
 
-citiesRouter.get('/', cityController.find);
+citiesRouter.get('/', cityController.index);
+
+citiesRouter.get('/:cityId', cityController.show);
 
 citiesRouter.post(
   '/',
