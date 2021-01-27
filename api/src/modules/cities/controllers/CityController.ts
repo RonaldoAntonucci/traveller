@@ -8,6 +8,7 @@ import CreateCityService from '../services/CreateCityService';
 import ListCitiesService from '../services/ListCitiesService';
 import ShowCityService from '../services/ShowCityService';
 import DeleteCityService from '../services/DeleteCityService';
+import UpdateCityService from '../services/UpdateCityService';
 
 type FindRequest = Request;
 
@@ -21,6 +22,15 @@ type CreateRequest = Request<
 >;
 
 type ShowRequest = Request<Record<string, string>>;
+
+type UpdateRequest = Request<
+  Record<string, string>,
+  unknown,
+  {
+    name?: string;
+    description?: string;
+  }
+>;
 
 type DeleteRequest = Request<Record<string, string>>;
 
@@ -64,6 +74,22 @@ export default class CityController implements IController<Request, Response> {
     });
 
     return res.json(classToClass(city));
+  }
+
+  public async update(req: UpdateRequest, res: Response): Promise<Response> {
+    const { name, description } = req.body;
+
+    const { cityId } = req.params;
+
+    const updateCity = container.resolve(UpdateCityService);
+
+    const updatedCity = await updateCity.execute({
+      cityId,
+      name,
+      description,
+    });
+
+    return res.json(classToClass(updatedCity));
   }
 
   public async delete(req: DeleteRequest, res: Response): Promise<Response> {

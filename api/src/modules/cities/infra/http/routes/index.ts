@@ -28,6 +28,8 @@ citiesRouter.post(
   cityController.create,
 );
 
+citiesRouter.put('/:cityId', cityController.update);
+
 citiesRouter.delete('/:cityId', cityController.delete);
 
 export { citiesRouter };
