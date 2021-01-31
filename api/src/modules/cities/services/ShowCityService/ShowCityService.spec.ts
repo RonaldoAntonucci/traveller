@@ -1,8 +1,9 @@
+import 'reflect-metadata';
+
 import City from '@modules/cities/domain/City';
 import { CityNotExistsError } from '@modules/cities/errors/service';
 import FakeCitiesRepository from '@modules/cities/repositories/fakes/FakeCitiesRepository';
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
-import 'reflect-metadata';
 import ShowCityService from '.';
 
 describe('ShowCityService - unit', () => {
