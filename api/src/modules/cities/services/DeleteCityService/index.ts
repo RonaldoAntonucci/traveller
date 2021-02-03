@@ -1,11 +1,11 @@
-import IDeleteUserDTO from '@modules/cities/dtos/IDeleteUserDTO';
+import IDeleteCityDTO from '@modules/cities/dtos/IDeleteCityDTO';
 import { CityNotExistsError } from '@modules/cities/errors/service';
 import IStorageProvider from '@modules/cities/providers/StorageProvider/IStorageProvider';
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
 import IService from '@shared/core/IService';
 import { inject, injectable } from 'tsyringe';
 
-type Request = IDeleteUserDTO;
+type Request = IDeleteCityDTO;
 
 type Response = number;
 
