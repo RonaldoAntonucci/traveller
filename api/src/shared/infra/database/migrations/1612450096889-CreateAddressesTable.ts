@@ -9,6 +9,8 @@ export default class CreateAddressesTable1612450096889
         name: 'id',
         type: 'int',
         isPrimary: true,
+        isGenerated: true,
+        generationStrategy: 'increment',
       },
       {
         name: 'zip_code',

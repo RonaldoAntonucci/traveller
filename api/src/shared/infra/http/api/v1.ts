@@ -5,6 +5,7 @@ import { userRouter, signRouter } from '@modules/users/infra/http/routes';
 import {
   citiesRouter,
   categoriesRouter,
+  placesRouter,
 } from '@modules/cities/infra/http/routes';
 
 import PaginationQueriesValidator from '../middlewares/PaginationQueriesValidator';
@@ -24,5 +25,7 @@ v1Router.use('/signin', signRouter);
 v1Router.use('/cities', citiesRouter);
 
 v1Router.use('/categories', categoriesRouter);
+
+v1Router.use('/places', placesRouter);
 
 export default v1Router;
