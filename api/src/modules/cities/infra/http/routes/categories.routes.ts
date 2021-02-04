@@ -5,12 +5,18 @@ import CategoryController from '@modules/cities/controllers/CategoryController';
 import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 import CreateCategoryValidator from '../validators/CreateCategoryValidator';
 
-const citiesRouter = Router();
+const categoriesRouter = Router();
 
 const categoryController = new CategoryController();
 
-citiesRouter.use(ensureAuthenticated());
+categoriesRouter.use(ensureAuthenticated());
 
-citiesRouter.post('/', CreateCategoryValidator(), categoryController.create);
+categoriesRouter.get('/', categoryController.index);
 
-export default citiesRouter;
+categoriesRouter.post(
+  '/',
+  CreateCategoryValidator(),
+  categoryController.create,
+);
+
+export default categoriesRouter;
