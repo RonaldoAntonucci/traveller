@@ -5,6 +5,7 @@ import { container } from 'tsyringe';
 import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateCategoryService from '../services/CreateCategoryService';
 import ListCategoriesService from '../services/ListCategoriesService';
+import ShowCategoryService from '../services/ShowCategoryService';
 
 type CreateRequest = Request<
   unknown,
@@ -13,6 +14,8 @@ type CreateRequest = Request<
     name: string;
   }
 >;
+
+type ShowRequest = Request<Record<string, string>>;
 
 export default class CategoryController
   implements IController<Request, Response> {
@@ -30,6 +33,16 @@ export default class CategoryController
     const { data, total } = await listCategories.execute(params);
 
     return res.json({ data, total });
+  }
+
+  public async show(req: ShowRequest, res: Response): Promise<Response> {
+    const { categoryId } = req.params;
+
+    const showCategory = container.resolve(ShowCategoryService);
+
+    const category = await showCategory.execute({ categoryId });
+
+    return res.json(category);
   }
 
   public async create(req: CreateRequest, res: Response): Promise<Response> {

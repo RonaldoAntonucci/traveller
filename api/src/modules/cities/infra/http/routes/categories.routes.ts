@@ -13,6 +13,8 @@ categoriesRouter.use(ensureAuthenticated());
 
 categoriesRouter.get('/', categoryController.index);
 
+categoriesRouter.get('/:categoryId', categoryController.show);
+
 categoriesRouter.post(
   '/',
   CreateCategoryValidator(),
