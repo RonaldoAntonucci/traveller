@@ -28,4 +28,6 @@ categoriesRouter.put(
   categoryController.update,
 );
 
+categoriesRouter.delete('/:categoryId', categoryController.delete);
+
 export default categoriesRouter;

@@ -7,6 +7,7 @@ import CreateCategoryService from '../services/CreateCategoryService';
 import ListCategoriesService from '../services/ListCategoriesService';
 import ShowCategoryService from '../services/ShowCategoryService';
 import UpdateCategoryService from '../services/UpdateCategoryService';
+import DeleteCategoryService from '../services/DeleteCategoryService';
 
 type CreateRequest = Request<
   unknown,
@@ -25,6 +26,8 @@ type UpdateRequest = Request<
     name: string;
   }
 >;
+
+type DeleteRequest = Request<Record<string, string>>;
 
 export default class CategoryController
   implements IController<Request, Response> {
@@ -77,5 +80,15 @@ export default class CategoryController
     });
 
     return res.json(updatedCategory);
+  }
+
+  public async delete(req: DeleteRequest, res: Response): Promise<Response> {
+    const { categoryId } = req.params;
+
+    const deleteCategory = container.resolve(DeleteCategoryService);
+
+    await deleteCategory.execute({ categoryId });
+
+    return res.send();
   }
 }
