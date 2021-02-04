@@ -8,6 +8,8 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import ICitiesRepository from '@modules/cities/repositories/ICitiesRepository';
 import CitiesRepository from '@modules/cities/infra/typeorm/repositories/CitiesRepository';
 import IStorageProvider from '@modules/cities/providers/StorageProvider/IStorageProvider';
+import ICategoriesRepository from '@modules/cities/repositories/ICategoriesRepository';
+import CategoriesRepository from '@modules/cities/infra/typeorm/repositories/CategoriesRepository';
 import BCryptHashProvider from './infra/providers/BCryptHashProvider';
 import JsonWebTokenProvider from './infra/providers/JsonWebTokenProvider';
 import DiskStorageProvider from './infra/providers/DiskStorageProvider';
@@ -20,6 +22,11 @@ container.registerSingleton<IUsersRepository>(
 container.registerSingleton<ICitiesRepository>(
   'CitiesRepository',
   CitiesRepository,
+);
+
+container.registerSingleton<ICategoriesRepository>(
+  'CategoriesRepository',
+  CategoriesRepository,
 );
 
 container.registerSingleton<IHashProvider>('HashProvider', BCryptHashProvider);

@@ -2,7 +2,10 @@ import { Router } from 'express';
 
 import { userRouter, signRouter } from '@modules/users/infra/http/routes';
 
-import { citiesRouter } from '@modules/cities/infra/http/routes';
+import {
+  citiesRouter,
+  categoriesRouter,
+} from '@modules/cities/infra/http/routes';
 
 import PaginationQueriesValidator from '../middlewares/PaginationQueriesValidator';
 
@@ -19,5 +22,7 @@ v1Router.use('/users', userRouter);
 v1Router.use('/signin', signRouter);
 
 v1Router.use('/cities', citiesRouter);
+
+v1Router.use('/categories', categoriesRouter);
 
 export default v1Router;
