@@ -4,6 +4,7 @@ import { Router } from 'express';
 import CategoryController from '@modules/cities/controllers/CategoryController';
 import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 import CreateCategoryValidator from '../validators/CreateCategoryValidator';
+import UpdateCategoryValidator from '../validators/UpdateCategoryValidator';
 
 const categoriesRouter = Router();
 
@@ -19,6 +20,12 @@ categoriesRouter.post(
   '/',
   CreateCategoryValidator(),
   categoryController.create,
+);
+
+categoriesRouter.put(
+  '/:categoryId',
+  UpdateCategoryValidator(),
+  categoryController.update,
 );
 
 export default categoriesRouter;

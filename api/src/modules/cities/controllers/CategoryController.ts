@@ -6,6 +6,7 @@ import PaginationParams, { OrderType } from '@shared/core/PaginationParams';
 import CreateCategoryService from '../services/CreateCategoryService';
 import ListCategoriesService from '../services/ListCategoriesService';
 import ShowCategoryService from '../services/ShowCategoryService';
+import UpdateCategoryService from '../services/UpdateCategoryService';
 
 type CreateRequest = Request<
   unknown,
@@ -16,6 +17,14 @@ type CreateRequest = Request<
 >;
 
 type ShowRequest = Request<Record<string, string>>;
+
+type UpdateRequest = Request<
+  Record<string, string>,
+  unknown,
+  {
+    name: string;
+  }
+>;
 
 export default class CategoryController
   implements IController<Request, Response> {
@@ -53,5 +62,20 @@ export default class CategoryController
     const category = await createCategory.execute({ name });
 
     return res.json(category);
+  }
+
+  public async update(req: UpdateRequest, res: Response): Promise<Response> {
+    const { name } = req.body;
+
+    const { categoryId } = req.params;
+
+    const updateCategory = container.resolve(UpdateCategoryService);
+
+    const updatedCategory = await updateCategory.execute({
+      categoryId,
+      name,
+    });
+
+    return res.json(updatedCategory);
   }
 }
