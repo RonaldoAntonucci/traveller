@@ -11,10 +11,24 @@ export default class CreateAddressesTable1612450096889
         isPrimary: true,
       },
       {
-        name: 'name',
+        name: 'zip_code',
         type: 'varchar',
         isNullable: false,
-        isUnique: true,
+      },
+      {
+        name: 'street',
+        type: 'varchar',
+        isNullable: false,
+      },
+      {
+        name: 'neighborhood',
+        type: 'varchar',
+        isNullable: false,
+      },
+      {
+        name: 'number',
+        type: 'varchar',
+        isNullable: true,
       },
       {
         name: 'updated_at',
